@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-color: rgb(25,25,25);
+    --secondary-color: #1E1E1E;
+    --border-color: rgb(46, 43, 43);
+}
+
+body{
+    background-color: var(--primary-color);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+   
+}
+
+header{
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    display: flex;
+    justify-content:space-between;
+}
+
+.search{
+    background-color: black;
+    border: 1px solid rgb(46, 43, 43);
+    border-radius: 25px;
+    padding: 2px 1rem;
+    font-size: 16px;
+    color:darkgrey;
+    font-family: inherit;
+    
+}
+
+.search:focus{
+    outline: none;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
+.movie {
+    width: 300px;
+    margin: 10px;
+    background-color: var(--secondary-color);
+    position: relative;
+    overflow:hidden;
+    border: 3px;
+    box-shadow: 1px 5px rgb(29, 28, 28);
+
+}
+
+.movie img{
+    width:100%;
+}
+
+.movie-info {
+    color:darkgrey;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 5px 10px 10px;
+    letter-spacing: 0.5px;
+}
+
+.movie-info h3{
+    margin-top: -1%;
+}
+
+.movie-info span{
+    background-color: var(--primary-color);
+    padding: 2px 7px;
+    border-radius: 70%;
+    font-weight: bold;
+}
+
+.movie-info span.green{
+    color: lightgreen;
+}
+
+.movie-info span.orange{
+    color: orange;
+}
+
+.movie-info span.red{
+    color: red;
+}
+
+.overview{
+    position:absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    max-height: 100%;
+    transform: translateY(100%);
+    transition:transform 0.3s ease-in;
+    color: lightgrey;
+}
+
+.movie:hover .overview{
+    transform:translateY(0%)
+}
+
+#tags{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.tag{
+    padding: 5px 20px;
+    margin: 5px 10px;
+    color: lightgrey;
+    background-color: var(--secondary-color);
+    border-radius: 25px;
+    cursor:pointer;
+}
+
+.tag:hover{
+    transform: scale(1.2);
+}
+
+.tag.highlight{
+    background-color: lightgrey;
+    color: var(--primary-color);
+}
+
+#noResult{
+    color: lightgrey;
+}
+
+.know-more{
+    background-color: lightgreen;
+    border-radius: 25px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    
+}
+
+/* The Overlay (background) */
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+  }
+  
+  /* Position the content inside the overlay */
+  .overlay-content {
+    position: relative;
+    top: 10%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+
+  }
+  
+  /* The navigation links inside the overlay */
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+  }
+  
+  /* Position the close button (top right corner) */
+  .overlay .closebtn {
+    position: absolute;
+    top: 0px;
+    right: 45px;
+    font-size: 60px;
+  }
+  
+  /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+  @media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+    }
+  }
+
+  .embed.hide{
+      display:none;
+  }
+  .embed.show{
+      display: inline-block;
+  }
+
+  .arrow{
+      position: absolute;
+      top: 43%;
+  }
+
+  .left-arrow{
+      left: 10%;
+      transform: rotateZ(-180deg);
+  }
+
+  .right-arrow{
+      right:10%;
+      
+  }
+
+  .loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.dot-div{
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dot{
+    margin: 10px 5px;
+    padding: 7px 15px;
+    border-radius: 50%;
+    border: 5px solid lightgreen;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+.dot:hover{
+    background-color:white;
+    color: black;
+}
+
+.dot-highlight{
+    background-color: white;
+    color: black;
+}
+
+
+.category{
+    position: relative;
+    left: 3.5%;
+    color: lightgrey;
+    width: 100%;
+
+}
+
+.Category-style{
+    margin-top: 17px;
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    background-color: lightgreen;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.Category-heading{
+    margin-left: 50px;
+}
+
+.pagination{
+    position: relative;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.previous-page{
+color: lightgrey;
+background-color: var(--secondary-color);
+padding: 5px 20px;
+border-radius: 25px;
+font-weight: bold;
+border: 4px solid lightgreen;
+margin: 0px 20px;
+cursor: pointer;
+}
+
+.next-page{
+    color: lightgrey;
+    background-color: var(--secondary-color);
+    padding: 5px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 4px solid lightgreen;
+    margin: 0px 20px;
+    cursor: pointer;
+}
+
+.pageNo{
+    color: lightgrey;
+    font-weight: bold;
+    padding: 5px 17px;
+    border: 4px solid lightgreen;
+    border-radius: 50%;
+    margin: 0px 20px;
+}
