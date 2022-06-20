@@ -320,6 +320,7 @@ nextPage.addEventListener('click', ()=>{
   if(page != totalPages){  
     getMovies(API_URL + `&page=${++page}`);
     pageNo .innerHTML = `${page}`;
+    tagsEl.scrollIntoView({behavior : 'smooth'});
   }
 });
 
@@ -327,6 +328,7 @@ previousPage.addEventListener('click', ()=>{
   if(page != 1){
     getMovies(API_URL + `&page=${--page}`);
     pageNo.innerHTML = `${page}`;
+    tagsEl.scrollIntoView({behavior : 'smooth'});
   }
 });
 
