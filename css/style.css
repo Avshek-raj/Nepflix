@@ -19,7 +19,7 @@ body{
 
 header{
     background-color: var(--secondary-color);
-    padding: 1rem;
+    padding:0 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -72,8 +72,10 @@ main{
     overflow:hidden;
     border: 3px;
     box-shadow: 1px 5px rgb(29, 28, 28);
+    cursor: pointer;
 
 }
+
 
 .movie img{
     width:100%;
@@ -356,4 +358,58 @@ cursor: pointer;
     border: 4px solid lightgreen;
     border-radius: 50%;
     margin: 0px 20px;
+}
+
+.main-div{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+   
+
+}
+
+.desc{
+    display: flex;
+    background: rgba(0, 0, 0, 0.7);
+    margin: 70px;
+    width: 90%;
+}
+
+.img-div{
+    display: flex;
+    width: 400px;
+    left: 15%;
+}
+
+.movie-img{
+    width: 100%;
+}
+
+.movie-desc{
+    width: 100%;
+    color: white;
+    padding: 0 20px;
+   
+    
+}
+
+.movie-overview{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.page2-trailer{
+    width:fit-content;
+    background-color: lightgreen;
+    border-radius: 25px;
+    padding: 5px 20px;
+    border: none;
+    cursor: pointer;
+    color: black;
+    margin-top: -20px;
+    margin-bottom: 10px;
+    
+}
+.page2-trailer:hover{
+    transform: scale(1.2);
 }

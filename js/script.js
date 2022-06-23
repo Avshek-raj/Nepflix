@@ -8,6 +8,7 @@ const GENRE_URL = BASE_URL + '/discover/movie?with_genres=';
 
 
 const main = document.querySelector('#main');
+const main1 = document.querySelector('#main1');
 const form = document.querySelector('#form');
 const searchEl = document.querySelector('.search');
 const title = document.querySelector('#title');
@@ -153,7 +154,6 @@ function getMovies(url){
    })
 }
 
-
 function showMovies(data){  
     main.innerHTML = `<div class="Category">
     <div class="Category-style"></div>
@@ -182,14 +182,24 @@ function showMovies(data){
     main.appendChild(movieEl);
     document.getElementById(id).addEventListener('click', ()=>{
       openNav(movie);
+      localStorage.setItem('openNav(movie)', openNav(movie));
       
     });
+    movieEl.addEventListener('click', ()=>{
+      movieId = movie.id ;
+      console.log(movieId);
+      window.open('movie.html');
+      localStorage.setItem("movieId", movieId);
+    })
     })
    
 }
+let movieId = '';
+
 let overlayContent = document.querySelector('#overlay-content');
 function openNav(movie) {
   const id = movie.id; 
+  movieId = id ;
   fetch(BASE_URL + '/movie/' + id + '/videos?' + API_KEY).then(res => res.json())
   .then(videoData => {
     if(videoData){
@@ -331,4 +341,5 @@ previousPage.addEventListener('click', ()=>{
     tagsEl.scrollIntoView({behavior : 'smooth'});
   }
 });
+
 
